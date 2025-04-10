@@ -57,4 +57,7 @@ public class PilaConArreglo<E> implements Stack<E> {
 		cant--;
 		return toReturn;
 	}
+	public String toString() {
+		return java.util.Arrays.toString(Pila);
+	}
 }
