@@ -10,7 +10,7 @@ public class TdaCola<E>{
 	
 		for(int i=0;i<11;i++)
 			q.add(i);
-		System.out.println(q.toString()+"tamaño:"+q.size());
+		System.out.println(q+"tamaño:"+q.size());
 		
 	
 	

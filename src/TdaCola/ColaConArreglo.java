@@ -59,4 +59,7 @@ public class ColaConArreglo <E>implements Queue<E>{
 		size--;
 		return toReturn;
 	}
+	public String toString() {
+		return java.util.Arrays.toString(Cola);
+	}
 }
