@@ -12,8 +12,6 @@ public static void main(String[] args) {
 		q.enqueue(i);
 	System.out.println(q+"tamaño:"+q.size());
 	
-
-
 	ColaConArreglo<Integer> q2=colaImpares(q);
 
 	System.out.println(q2.toString()+"tamaño"+q.size());
