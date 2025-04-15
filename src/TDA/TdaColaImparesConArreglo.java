@@ -2,7 +2,7 @@ package TDA;
 
 import TdaCola.*;;
 
-public class TdaColaConArreglo {
+public class TdaColaImparesConArreglo {
 	
 public static void main(String[] args) {
 

@@ -3,7 +3,7 @@ package TDA;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class TdaCola<E>{		
+public class TdaColaImpares<E>{		
 	public static void main(String[] args) {
 	
 		Queue<Integer> q=new LinkedList<Integer>();
