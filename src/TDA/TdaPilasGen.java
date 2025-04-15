@@ -25,9 +25,9 @@ public class TdaPilasGen {
 		Stack<Integer>Inter=new Stack<Integer>();
 		for(int i=0;i<tamanio;i++) {
 			if(g1.size()>0)
-				Inter.add(g1.pop());
+				Inter.push(g1.pop());
 			if(g2.size()>0)	
-				Inter.add(g2.pop());	
+				Inter.push(g2.pop());	
 		}
 		return Inter;
 	}
