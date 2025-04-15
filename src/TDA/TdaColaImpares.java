@@ -12,8 +12,6 @@ public class TdaColaImpares<E>{
 			q.add(i);
 		System.out.println(q+"tamaño:"+q.size());
 		
-	
-	
 	Queue<Integer> q2=colaImpares(q);
 
 	System.out.println(q2.toString());
