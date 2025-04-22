@@ -2,17 +2,17 @@ package TdaPila;
 
 public class PilaEnlazada<E> implements Stack<E>{
 	//atributos de instancia
-	protected Nodo<E> head;
+	protected Nodo<E> top;
 	protected int size;
 	//constructor 
 	public PilaEnlazada(){
-		head=null;
+		top=null;
 		size=0;
 		}
 	//comandos
 	public void push(E element) {
-		Nodo<E>Aux= new Nodo<E>(element,head);
-		head=Aux;
+		Nodo<E>Aux= new Nodo<E>(element,top);
+		top=Aux;
 		size++;
 	}
 	//consultas 
@@ -25,11 +25,11 @@ public class PilaEnlazada<E> implements Stack<E>{
 	public E top() {
 		if (isEmpty())
 			throw new Exceptions.EmptyStackException("la pila esta vacia");
-		return head.getElemento();
+		return top.getElemento();
 	}
 	public E pop(){
 			E aux=top();
-			head = head.getSiguiente();
+			top = top.getSiguiente();
 			size--;
 			return aux;
 		}
