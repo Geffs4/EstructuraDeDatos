@@ -28,9 +28,9 @@ public class PilaEnlazada<E> implements Stack<E>{
 		return top.getElemento();
 	}
 	public E pop(){
-			E aux=top();
-			top = top.getSiguiente();
-			size--;
-			return aux;
+		E aux=top();
+		top = top.getSiguiente();
+		size--;
+		return aux;
 		}
 	}
