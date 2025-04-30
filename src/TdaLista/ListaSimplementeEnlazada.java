@@ -1,9 +1,6 @@
 package TdaLista;
 
-import java.awt.Checkbox;
 import java.util.Iterator;
-
-import Exceptions.*;
 
 public class ListaSimplementeEnlazada<E> implements PositionList<E> {
 	//atributos de instancia
@@ -124,8 +121,7 @@ public class ListaSimplementeEnlazada<E> implements PositionList<E> {
 	}
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ElementIterator<E>(this);
 	}
 	@Override
 	public Iterable<Position<E>> positions() {
