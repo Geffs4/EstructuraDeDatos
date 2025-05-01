@@ -7,13 +7,17 @@ public class DNodo<E> implements Position<E>{
 	private E element;
 	
 	//Constructor 
-	public DNodo(DNodo<E> previo,E elem) {
+	public DNodo(E elem,DNodo<E>previo,DNodo<E>siguiente) {
 		prev=previo;
-		next=null;
+		next=siguiente;
 		element=elem;
+	}	
+		
+	public DNodo(E elem,DNodo<E> previo) {
+		this(elem,previo,null);
 	}
 	public DNodo(E elem){
-		this(null,elem);
+		this(elem,null);
 	}
 	public DNodo() {
 		this (null);

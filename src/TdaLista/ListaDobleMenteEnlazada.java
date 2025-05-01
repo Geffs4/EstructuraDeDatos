@@ -18,76 +18,81 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		trailer.setPrevio(header);
 		size=0;
 	}
+	
 	public int size() {
 		return size;
 	}
+	
 	public boolean isEmpty() {
 		return size==0;
 	}
+	
 	public Position<E> first() {
 		if(isEmpty())
 			throw new EmptyListException("la lista esta vacia");
+		
 		return header.getSiguiente();
 	}
+	
 	public Position<E> last(){
 		if(isEmpty())
 			throw new EmptyListException("la lista esta vacia");
+		
 		return trailer.getPrevio();
 	}
+	
 	public Position<E> next(Position<E> p) {
 		DNodo<E>aux=checkPosition(p);
 			if(aux.getSiguiente()==trailer)
 				throw new BoundaryViolationException("este es el ultimo elemento");
+			
 		return aux.getSiguiente();
 	}
+	
 	private DNodo<E> checkPosition(Position<E> p){	
 		if(p==null)
 			throw new InvalidPositionException("posicion nula");
 		if(isEmpty())
-			throw new InvalidPositionException("la lista esta vacia");
+			throw new InvalidPositionException("la lista esta vacia");	
 		try {
-		return (DNodo<E>)p;
+			return (DNodo<E>)p;
 		}catch(ClassCastException e) {
 			throw new InvalidPositionException("p no es un nodo de la lista valido");
 		}
 	}
+	
 	public Position<E> prev(Position<E> p) {
 		DNodo<E>aux=checkPosition(p);
-		if(aux.getPrevio()==header)
-			throw new BoundaryViolationException("este es el primer nodo");	
+		if(aux==first())
+			throw new BoundaryViolationException("este es el primer nodo");
+		
 		return aux.getPrevio();
 	}
+	
 	@Override
 	public void addFirst(E element) {
-		DNodo<E>nuevo=new DNodo<E>(element);
+		DNodo<E>nuevo=new DNodo<E>(element,header);
 		if(isEmpty()) {
 			nuevo.setSiguiente(trailer);
-			nuevo.setPrevio(header);
-			header.setSiguiente(nuevo);
 			trailer.setPrevio(nuevo);
 		}
 		else {
-			DNodo<E>primero=checkPosition(first());
-			nuevo.setSiguiente(primero);
-			nuevo.setPrevio(header);
-			header.setSiguiente(nuevo);
-			primero.setPrevio(nuevo);
-		}
+			nuevo.setSiguiente(header.getSiguiente());
+			header.getSiguiente().setPrevio(nuevo);		
+			}
+		header.setSiguiente(nuevo);
 		size++;
 	}
 
 	@Override
 	public void addLast(E element) {
 		if(isEmpty()) {
-			//esto lo hago para ahorrar codigo
 			addFirst(element);
 		}
 		else {
-			DNodo<E>nuevo=new DNodo<E>(element);
-			DNodo<E>ult=checkPosition(last());
-			ult.setSiguiente(nuevo);
-			nuevo.setPrevio(ult);
-			nuevo.setSiguiente(trailer);
+			DNodo<E>nuevo=new DNodo<E>(element,trailer.getPrevio(),trailer);
+			trailer.getPrevio().setSiguiente(nuevo);
+			trailer.setPrevio(nuevo);
 			size++;
 		}
 	}
@@ -99,10 +104,8 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		if(nod.equals(last()))
 			addLast(element);
 		else{
-			DNodo<E>nuevo=new DNodo<E>(element);
+			DNodo<E>nuevo=new DNodo<E>(element,nod,nod.getSiguiente());
 			nod.getSiguiente().setPrevio(nuevo);
-			nuevo.setSiguiente(nod.getSiguiente());
-			nuevo.setPrevio(nod);
 			nod.setSiguiente(nuevo);
 			size++;
 		}
@@ -132,6 +135,9 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		
 		pos.getPrevio().setSiguiente(pos.getSiguiente());
 		pos.getSiguiente().setPrevio(pos.getPrevio());
+		pos.setPrevio(null);
+		pos.setSiguiente(null);
+		
 		size--;
 		
 		return auxE;
@@ -149,12 +155,12 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		return new ElementIterator<E>(this);
 	}
 	public Iterable<Position<E>> positions() {
-		PositionList<Position<E>> toReturn = new ListaDobleMenteEnlazada<Position<E>>();
-	    DNodo<E> nodo = header.getSiguiente();
-	    while (nodo != trailer) {
-	    	toReturn.addLast(nodo);
-	        nodo = nodo.getSiguiente();
-	    }
-	    return toReturn;
-	    }
+        PositionList<Position<E>> toReturn = new ListaDobleMenteEnlazada<Position<E>>();
+        DNodo<E> nodo = header.getSiguiente();
+        while (nodo != trailer) {
+            toReturn.addLast(nodo);
+            nodo = nodo.getSiguiente();
+        }
+        return toReturn;
+    }
 }
