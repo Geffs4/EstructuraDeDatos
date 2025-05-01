@@ -3,34 +3,16 @@ package TdaLista;
 public class TestListaMio {
 
 	public static void main(String[] args) {
-		ListaSimplementeEnlazada<Character> l=new ListaSimplementeEnlazada<Character>();
+		ListaDobleMenteEnlazada<String> l=new ListaDobleMenteEnlazada<String>();
 		
-		l.addFirst('D');
-		l.addFirst('C');
-		l.addFirst('B');
-		l.addFirst('A');
+		l.addLast("Primero");
+		l.addLast("Medio");
+		l.addLast("Ultimo");
 		
-		Position<Character> p=l.first();
 		
-		while(p!=l.last()) {
-			System.out.println(p.element());
-			p=l.next(p);
-		}
-		System.out.println(p.element());
-		
-		Position<Character> aux=l.last();
-		
-		l.addBefore(aux,'P');
-		
-		System.out.println("----------------------------------");
-		
-		p=l.first();
-		
-		while(p!=l.last()) {
-			System.out.println(p.element());
-			p=l.next(p);
-		}
-		System.out.println(p.element());
-		
+		l.addSA("+", "*");
+		l.addSA("2","3");
+		System.out.println(l.toString());
+				
 	}
 }

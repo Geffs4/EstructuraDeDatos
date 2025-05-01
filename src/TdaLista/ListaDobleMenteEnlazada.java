@@ -83,7 +83,6 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		header.setSiguiente(nuevo);
 		size++;
 	}
-
 	@Override
 	public void addLast(E element) {
 		if(isEmpty()) {
@@ -163,4 +162,26 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
         }
         return toReturn;
     }
+
+	public String toString() {
+		Iterator<E> it = iterator(); 
+		String s= "[";
+		while( it.hasNext()){
+			s= s + it.next(); 
+			if(it.hasNext())
+				s= s+" , ";
+		}
+		s= s+"]";
+		return s;
+	}
+//tp2
+	public void addSA(E e1, E e2) {
+		if(isEmpty())
+			throw new EmptyListException("La lista esta vacia");
+		if(size==1) {
+			throw new BoundaryViolationException("la lista solo tiene un elemento");
+		}	
+		addBefore(last(),e2);
+		addAfter(first(),e1);
+	}
 }
