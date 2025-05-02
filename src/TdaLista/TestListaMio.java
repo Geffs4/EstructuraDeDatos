@@ -9,10 +9,10 @@ public class TestListaMio {
 		l.addLast("Medio");
 		l.addLast("Ultimo");
 		
+		l.addSA("*", "*");
+		l.addSA("0","0");
 		
-		l.addSA("+", "*");
-		l.addSA("2","3");
 		System.out.println(l.toString());
-				
-	}
+		System.out.println(l.cantElements("2"));
+		}
 }

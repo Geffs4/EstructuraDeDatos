@@ -174,7 +174,7 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		s= s+"]";
 		return s;
 	}
-//tp2
+//tp4-2
 	public void addSA(E e1, E e2) {
 		if(isEmpty())
 			throw new EmptyListException("La lista esta vacia");
@@ -184,4 +184,24 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		addBefore(last(),e2);
 		addAfter(first(),e1);
 	}
+//tp4-3
+	public boolean belong(E e1) {
+		Iterator<E>it=iterator();
+		boolean encontre=false;
+		
+		while(it.hasNext()&&!encontre)
+			encontre=it.next().equals(e1);
+		
+		return encontre;
+	}
+	public int cantElements(E e1) {
+		int Cont=0;
+		Iterator<E>it=iterator();
+		while(it.hasNext())
+			if(it.next().equals(e1))
+				Cont++;
+		
+		return Cont;
+	}
+	
 }
