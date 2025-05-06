@@ -1,4 +1,4 @@
-package Ejercicio;
+package Ejercicios;
 
 import TdaLista.*;
 import TdaLista.PositionList;
