@@ -73,17 +73,22 @@ public class TestListaTp4 {
 		return exit;
 		}
 	public static <E> PositionList<E> removeLists(PositionList<E>l1,PositionList<E> l2){
-		if(l1.isEmpty()&&l2.isEmpty())
-			return l2;
 		PositionList<E>del=new ListaDoblementeEnlazada<E>();
-		
+		if(l1.isEmpty()&&l2.isEmpty())
+			return del;
+	
 		Position<E>p1=l1.first();
 		Position<E>p2=l2.first();
 		
 		E aux;
 		
 		while(p1!=null)
-			if(p1.equals(p2))
-				del.addLast(l2.remove(p2));
+			if(buscar(p1,l2))
+				del.addLast(l2.remove(p1))
+			
+		
+	private boolean buscar(Position<E>p,PositionList<E>list) {
+		boolean encontre=false;
+	}
 		}
 }	

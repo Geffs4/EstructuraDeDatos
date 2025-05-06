@@ -181,42 +181,7 @@ public class ListaDoblementeEnlazada<E> implements PositionList<E> {
 		addBefore(last(),e2);
 		addAfter(first(),e1);
 	}
-//tp4-3
-	public boolean belong(E e1) {
-		Iterator<E>it=iterator();
-		boolean encontre=false;
-		
-		while(it.hasNext()&&!encontre)
-			encontre=it.next().equals(e1);
-		
-		return encontre;
-	}
-	public int cantElements(E e1) {
-		int Cont=0;
-		Iterator<E>it=iterator();
-		while(it.hasNext())
-			if(it.next().equals(e1))
-				Cont++;
-		
-		return Cont;
-	}
-	public boolean cantBelong(E x,int n) {
-		int cant=0;
-		while(cant!=n){
-			if(belong(x))
-				cant++;
-		}
-		return cant==n;			
-	}
-//tp4-4
-	public PositionList<E> dupper(PositionList<E> list){
-		PositionList<E>exit=new ListaDoblementeEnlazada<E>();
-		for(E aux:list) {
-			exit.addLast(aux);
-			exit.addLast(aux);
-		}
-		return exit;
-	}
+
 //ejercicio de la clase 8 
 	public ListaDoblementeEnlazada<E> clone(){
 		ListaDoblementeEnlazada<E>nueva= new ListaDoblementeEnlazada<E>();
