@@ -4,7 +4,6 @@ import TdaLista.*;
 
 public class ejercicio4 {
 	//buscar una lista dentro de otra
-	
 	public <E> boolean pertenece(PositionList<E> list,PositionList<E>lin) {
 		if(list.isEmpty())
 			return false;

@@ -4,14 +4,14 @@ import java.util.Iterator;
 
 import Exceptions.*;
 
-public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
+public class ListaDoblementeEnlazada<E> implements PositionList<E> {
 	//atributos de intancia
 	protected DNodo<E> header;
 	protected DNodo<E> trailer;
 	protected int size;
 	
 	//constructor
-	public ListaDobleMenteEnlazada() {
+	public ListaDoblementeEnlazada() {
 		header=new DNodo<E>();
 		trailer=new DNodo<E>();
 		header.setSiguiente(trailer);
@@ -134,9 +134,6 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		
 		pos.getPrevio().setSiguiente(pos.getSiguiente());
 		pos.getSiguiente().setPrevio(pos.getPrevio());
-		pos.setPrevio(null);
-		pos.setSiguiente(null);
-		
 		size--;
 		
 		return auxE;
@@ -154,7 +151,7 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		return new ElementIterator<E>(this);
 	}
 	public Iterable<Position<E>> positions() {
-        PositionList<Position<E>> toReturn = new ListaDobleMenteEnlazada<Position<E>>();
+        PositionList<Position<E>> toReturn = new ListaDoblementeEnlazada<Position<E>>();
         DNodo<E> nodo = header.getSiguiente();
         while (nodo != trailer) {
             toReturn.addLast(nodo);
@@ -213,11 +210,36 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 	}
 //tp4-4
 	public PositionList<E> dupper(PositionList<E> list){
-		PositionList<E>exit=new ListaDobleMenteEnlazada<E>();
+		PositionList<E>exit=new ListaDoblementeEnlazada<E>();
 		for(E aux:list) {
 			exit.addLast(aux);
 			exit.addLast(aux);
 		}
 		return exit;
+	}
+//ejercicio de la clase 8 
+	public ListaDoblementeEnlazada<E> clone(){
+		ListaDoblementeEnlazada<E>nueva= new ListaDoblementeEnlazada<E>();
+		DNodo<E>p=header.getSiguiente();
+		while(p!=trailer) {
+			nueva.addLast(p.element());
+			p=p.getSiguiente();
+		}
+	return nueva;
+	}
+	public void removeAllE(E elem){
+		Position<E>p=header.getSiguiente();
+		while(p!=trailer)
+			if(p.element().equals(elem))
+				remove(p);
+			p=next(p);	
+	}
+	public void atp(E elemen) {
+		DNodo<E>p=header.getSiguiente();
+		while(p!=trailer) {
+			if(!p.element().equals(elemen))
+				addBefore(p, elemen);
+			p=p.getSiguiente();
+		}
 	}
 }

@@ -3,7 +3,7 @@ package TdaLista;
 public class TestListaMio {
 
 	public static void main(String[] args) {
-		ListaDobleMenteEnlazada<String> l=new ListaDobleMenteEnlazada<String>();
+		ListaDoblementeEnlazada<String> l=new ListaDoblementeEnlazada<String>();
 		
 		l.addLast("Primero");
 		l.addLast("Medio");

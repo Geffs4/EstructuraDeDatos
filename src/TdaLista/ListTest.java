@@ -16,7 +16,7 @@ public class ListTest {
 	 */
 
 	private PositionList<String> getList() {
-		return new ListaDobleMenteEnlazada<String>();
+		return new ListaDoblementeEnlazada<String>();
 	}
 
 	@Before
