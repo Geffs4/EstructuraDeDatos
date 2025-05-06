@@ -203,5 +203,21 @@ public class ListaDobleMenteEnlazada<E> implements PositionList<E> {
 		
 		return Cont;
 	}
-	
+	public boolean cantBelong(E x,int n) {
+		int cant=0;
+		while(cant!=n){
+			if(belong(x))
+				cant++;
+		}
+		return cant==n;			
+	}
+//tp4-4
+	public PositionList<E> dupper(PositionList<E> list){
+		PositionList<E>exit=new ListaDobleMenteEnlazada<E>();
+		for(E aux:list) {
+			exit.addLast(aux);
+			exit.addLast(aux);
+		}
+		return exit;
+	}
 }

@@ -8,11 +8,10 @@ public class TestListaMio {
 		l.addLast("Primero");
 		l.addLast("Medio");
 		l.addLast("Ultimo");
-		
-		l.addSA("*", "*");
-		l.addSA("0","0");
+	
 		
 		System.out.println(l.toString());
-		System.out.println(l.cantElements("2"));
+		PositionList<String>aux=l.dupper(l);
+		System.out.println(aux.toString());
 		}
-}
+}	
