@@ -71,8 +71,8 @@ public class TestListaTp4 {
 			exit.addLast(aux);
 			}
 		return exit;
-		}
-	public static <E> PositionList<E> removeLists(PositionList<E>l1,PositionList<E> l2){
+	}
+/*	public static <E> PositionList<E> removeLists(PositionList<E>l1,PositionList<E> l2){
 		PositionList<E>del=new ListaDoblementeEnlazada<E>();
 		if(l1.isEmpty()&&l2.isEmpty())
 			return del;
@@ -91,4 +91,5 @@ public class TestListaTp4 {
 		boolean encontre=false;
 	}
 		}
-}	
+	*/
+}
