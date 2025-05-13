@@ -13,8 +13,7 @@ public class TestListaTp4 {
 			l.addLast(i);
 	
 		System.out.println(l.toString());
-		
-		
+
 //chequeo que belong funcione
 		boolean pertenece=true;
 		for(int i=1;i<5&&pertenece;i++) {
@@ -36,7 +35,20 @@ public class TestListaTp4 {
 		System.out.println("cantBelong:"+mensaje);
 //---------------------------metodo: dupper
 		System.out.println(dupper(l).toString());
-	}
+	
+//---------------------------
+		ListaDoblementeEnlazada<String>B=new ListaDoblementeEnlazada<String>();
+		
+		B.addLast("a");
+		B.addLast("B");
+		B.addLast("a");
+		B.addLast("a");
+		B.addLast("a");
+		
+		ListaDoblementeEnlazada<String>del=(ListaDoblementeEnlazada<String>) removeLists(A,B);
+		System.out.println(del.toString()+"+");
+
+	}	
 	public static <E>boolean belong(E e1,PositionList<E>list) {
 		Iterator<E>it=list.iterator();
 		boolean encontre=false;
@@ -72,24 +84,32 @@ public class TestListaTp4 {
 			}
 		return exit;
 	}
-/*	public static <E> PositionList<E> removeLists(PositionList<E>l1,PositionList<E> l2){
+	public static <E> PositionList<E> removeLists(PositionList<E>l1,PositionList<E> l2){
 		PositionList<E>del=new ListaDoblementeEnlazada<E>();
 		if(l1.isEmpty()&&l2.isEmpty())
 			return del;
 	
 		Position<E>p1=l1.first();
-		Position<E>p2=l2.first();
 		
-		E aux;
-		
-		while(p1!=null)
-			if(buscar(p1,l2))
-				del.addLast(l2.remove(p1))
-			
-		
-	private boolean buscar(Position<E>p,PositionList<E>list) {
+		while(p1!=null) {
+			if(buscar(p1,l2)) {
+				del.addLast(l2.remove(p1));
+			}
+			p1=l1.next(p1);
+		}
+		return del;
+	}	//no funciona
+	
+	private static <E> boolean buscar(Position<E>p,PositionList<E>list) {
+		Iterator<E>it=list.iterator();
 		boolean encontre=false;
+		while(it.hasNext()&&!encontre);{
+			System.out.println("ññ");
+			encontre=p.element().equals(it.next());
+		}
+		
+			
+		return encontre;
 	}
 		}
-	*/
-}
+	
