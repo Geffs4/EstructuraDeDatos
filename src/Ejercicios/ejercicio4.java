@@ -2,7 +2,7 @@ package Ejercicios;
 
 import Auxiliar.Position;
 import Auxiliar.PositionList;
-import TdaLista.*;
+
 
 public class ejercicio4 {
 	//buscar una lista dentro de otra

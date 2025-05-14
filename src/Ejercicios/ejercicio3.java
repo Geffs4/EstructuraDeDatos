@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import Auxiliar.Position;
 import Auxiliar.PositionList;
-import TdaLista.*;
+
 
 public class ejercicio3 {
 	//tengo dos listas hay que verificar que sean iguales

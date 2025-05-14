@@ -2,7 +2,7 @@ package Ejercicios;
 
 import Auxiliar.Position;
 import Auxiliar.PositionList;
-import TdaLista.*;
+
 
 //ED pdf-8 
 public class ejercicio1 {

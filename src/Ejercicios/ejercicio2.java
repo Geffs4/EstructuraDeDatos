@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import Auxiliar.Position;
 import Auxiliar.PositionList;
-import TdaLista.*;
+
 
 public class ejercicio2 {
 	public <E> boolean aparece(E elem,PositionList<E> lista) {

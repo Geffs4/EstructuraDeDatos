@@ -1,7 +1,5 @@
 package TdaMapeo;
 
-import java.util.Map.*;
-
 import Auxiliar.Entry;
 
 /**
