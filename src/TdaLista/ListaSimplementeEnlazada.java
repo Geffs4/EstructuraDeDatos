@@ -2,6 +2,8 @@ package TdaLista;
 
 import java.util.Iterator;
 
+import Auxiliar.Position;
+
 public class ListaSimplementeEnlazada<E> implements PositionList<E> {
 	//atributos de instancia
 	protected Nodo<E> head;

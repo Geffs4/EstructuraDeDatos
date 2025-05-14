@@ -1,6 +1,8 @@
 package Ejercicios;
 
 import java.util.Iterator;
+
+import Auxiliar.Position;
 import TdaLista.*;
 
 public class ejercicio2 {

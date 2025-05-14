@@ -7,6 +7,8 @@ import java.util.*;
 
 import org.junit.*;
 
+import Auxiliar.Position;
+
 public class ListTest {
 	private PositionList<String> l; // interface
 	private String n1, n2, n3, n4, n5, n6;

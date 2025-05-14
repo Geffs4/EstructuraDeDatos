@@ -1,5 +1,7 @@
 package TdaLista;
 
+import Auxiliar.Position;
+
 public class DNodo<E> implements Position<E>{
 	//atrbutos de instancia
 	private DNodo<E> prev;

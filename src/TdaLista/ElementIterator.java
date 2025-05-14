@@ -2,6 +2,8 @@ package TdaLista;
 
 import java.util.*;
 
+import Auxiliar.Position;
+
 public class ElementIterator<E> implements Iterator<E> {
 	//atributos de instancia
 	protected PositionList<E> list;

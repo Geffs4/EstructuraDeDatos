@@ -2,6 +2,8 @@ package TdaMapeo;
 
 import java.util.Map.*;
 
+import Auxiliar.Entry;
+
 /**
  * Interface Map
  * @author Cátedra de Estructuras de Datos, Departamento de Cs. e Ing. de la Computación, UNS.

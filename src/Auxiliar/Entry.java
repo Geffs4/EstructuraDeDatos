@@ -1,4 +1,4 @@
-package TdaMapeo;
+package Auxiliar;
 
 /**
  * Interfaz Entry. 

@@ -1,5 +1,7 @@
 package TdaMapeo;
 
+import Auxiliar.Entry;
+import Auxiliar.Position;
 import Exceptions.*;
 import TdaLista.*;
 

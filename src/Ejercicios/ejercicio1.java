@@ -1,5 +1,6 @@
 package Ejercicios;
 
+import Auxiliar.Position;
 import TdaLista.*;
 import TdaLista.PositionList;
 

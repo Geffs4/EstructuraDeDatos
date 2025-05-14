@@ -1,5 +1,7 @@
 package TdaMapeo;
 
+import Auxiliar.Entry;
+
 public class Entrada<K, V> implements Entry<K, V> {
 	//atributos de instancia
 	private K clave;

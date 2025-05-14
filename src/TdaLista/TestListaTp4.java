@@ -2,6 +2,8 @@ package TdaLista;
 
 import java.util.Iterator;
 
+import Auxiliar.Position;
+
 
 
 public class TestListaTp4 {
