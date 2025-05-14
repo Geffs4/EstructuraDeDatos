@@ -8,6 +8,7 @@ import java.util.*;
 import org.junit.*;
 
 import Auxiliar.Position;
+import Auxiliar.PositionList;
 
 public class ListTest {
 	private PositionList<String> l; // interface

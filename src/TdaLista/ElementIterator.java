@@ -3,6 +3,7 @@ package TdaLista;
 import java.util.*;
 
 import Auxiliar.Position;
+import Auxiliar.PositionList;
 
 public class ElementIterator<E> implements Iterator<E> {
 	//atributos de instancia

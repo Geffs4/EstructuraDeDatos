@@ -1,6 +1,4 @@
-package TdaMapeo;
-
-import Auxiliar.Entry;
+package Auxiliar;
 
 public class Entrada<K, V> implements Entry<K, V> {
 	//atributos de instancia

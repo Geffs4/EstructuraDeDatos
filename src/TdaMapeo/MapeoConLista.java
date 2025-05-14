@@ -1,16 +1,18 @@
 package TdaMapeo;
 
+import Auxiliar.Entrada;
 import Auxiliar.Entry;
 import Auxiliar.Position;
+import Auxiliar.PositionList;
 import Exceptions.*;
 import TdaLista.*;
 
-public class TdaMapeoConLista<K,V> implements Map<K,V> {
+public class MapeoConLista<K,V> implements Map<K,V> {
 	//atributos de instancia
 	protected ListaDoblementeEnlazada<Entrada<K,V>> S;
 	
 	//constructor
-	public TdaMapeoConLista(){
+	public MapeoConLista(){
 		S=new ListaDoblementeEnlazada<Entrada<K,V>>();	}
 	@Override
 	public int size() {

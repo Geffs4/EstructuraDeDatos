@@ -1,7 +1,6 @@
-package TdaLista;
+package Auxiliar;
 
 import java.util.Iterator;
-import Auxiliar.Position;
 
 
 /**

@@ -3,6 +3,7 @@ package TdaLista;
 import java.util.Iterator;
 
 import Auxiliar.Position;
+import Auxiliar.PositionList;
 import Exceptions.*;
 
 public class ListaDoblementeEnlazada<E> implements PositionList<E> {

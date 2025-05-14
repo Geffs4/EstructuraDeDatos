@@ -3,6 +3,7 @@ package TdaLista;
 import java.util.Iterator;
 
 import Auxiliar.Position;
+import Auxiliar.PositionList;
 
 public class ListaSimplementeEnlazada<E> implements PositionList<E> {
 	//atributos de instancia
