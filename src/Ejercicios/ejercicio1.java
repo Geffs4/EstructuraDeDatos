@@ -3,7 +3,6 @@ package Ejercicios;
 import Auxiliar.Position;
 import Auxiliar.PositionList;
 
-
 //ED pdf-8 
 public class ejercicio1 {
 	public static void main(String[]args) {
