@@ -1,9 +1,7 @@
 package TdaDiccionario;
 
 import Exceptions.*;
-
 import java.util.Iterator;
-
 import Auxiliar.*;
 import TdaLista.*;
 
@@ -76,14 +74,32 @@ public class DiccionarioConLista<K,V> implements Dictionary<K,V> {
 	@Override
 	public Entry<K, V> remove(Entry<K, V> e) {
 		// si la entrada es nula lanzo una excepcion
-		if(e==null) {throw new Invali}
-		return null;
+		if(e==null) {throw new InvalidEntryException("la entrada es invalida en remove()");}
+			boolean encontre=false;
+			Entry<K,V>toReturn=null;
+			//Creo un iterador con las posiciones de las entradas para poder compararlas y porque la necesitamos para borrarla
+			Iterator<Position<Entrada<K,V>>>it=list.positions().iterator();
+			
+			while(it.hasNext()&&!encontre) {
+				Position<Entrada<K,V>>pos=it.next();
+				if(pos.element().getKey()==e.getKey()&&pos.element().getValue()==e.getValue());{
+					//le asigno al toReturn esto porque el remove devuelve el elemento que borro
+					toReturn=list.remove(pos);
+					encontre=true;
+				}
+			}
+			//si la entrada no se encuentra dentro del diccionario lanzo una excepcion
+			if(!encontre)
+				throw new InvalidEntryException("la entrada no se encuentra en el diccionario");
+				
+		return toReturn;
 	}
-
-	@Override
 	public Iterable<Entry<K, V>> entries() {
-		// TODO Auto-generated method stub
-		return null;
+		PositionList<Entry<K,V>>exit=new ListaDoblementeEnlazada<Entry<K,V>>();
+		for(Entrada<K,V>input:list)
+			exit.addLast(input);
+		
+		return exit;
 	}
 
 
