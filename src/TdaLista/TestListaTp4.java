@@ -49,7 +49,8 @@ public class TestListaTp4 {
 		B.addLast("a");
 		
 		ListaDoblementeEnlazada<String>del=(ListaDoblementeEnlazada<String>) removeLists(A,B);
-		System.out.println(del.toString()+"+");
+		System.out.println(A.toString()+" "+B.toString());
+		System.out.println("Elementos eliminados"+del.toString()+"+");
 
 	}	
 	public static <E>boolean belong(E e1,PositionList<E>list) {
@@ -91,28 +92,34 @@ public class TestListaTp4 {
 		PositionList<E>del=new ListaDoblementeEnlazada<E>();
 		if(l1.isEmpty()&&l2.isEmpty())
 			return del;
-	
-		Position<E>p1=l1.first();
+				
+		Iterator<E>it=l1.iterator();
+		Iterator<Position<E>>it2=l2.positions().iterator();
+		E p1=null;
 		
-		while(p1!=null) {
-			if(buscar(p1,l2)) {
-				del.addLast(l2.remove(p1));
-			}
-			p1=l1.next(p1);
+		while(it.hasNext()){
+			p1=it.next();
+			if(buscar(p1,l2))
+				while(it2.hasNext()){
+					Position<E>p2=it2.next();
+						if(p2.element().equals(p1)){
+							del.addLast(l2.remove(p2));
+					}					
+				}
 		}
 		return del;
-	}	//no funciona
+	}
 	
-	private static <E> boolean buscar(Position<E>p,PositionList<E>list) {
-		Iterator<E>it=list.iterator();
+	private static <E> boolean buscar(E p,PositionList<E>list) {
+		Iterator<Position<E>>it=list.positions().iterator();
 		boolean encontre=false;
-		while(it.hasNext()&&!encontre);{
-			System.out.println("ññ");
-			encontre=p.element().equals(it.next());
+		while(it.hasNext()&&!encontre) {
+			encontre=it.next().element().equals(p);
 		}
-		
-			
 		return encontre;
 	}
-		}
+	//preguntar por el comportamiento de removeLists
+	
+	}
+
 	
