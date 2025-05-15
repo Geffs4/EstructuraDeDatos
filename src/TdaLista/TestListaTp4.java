@@ -50,8 +50,9 @@ public class TestListaTp4 {
 		
 		ListaDoblementeEnlazada<String>del=(ListaDoblementeEnlazada<String>) removeLists(A,B);
 		System.out.println(A.toString()+" "+B.toString());
-		System.out.println("Elementos eliminados"+del.toString()+"+");
+		System.out.println("Elementos eliminados"+del.toString());
 
+		
 	}	
 	public static <E>boolean belong(E e1,PositionList<E>list) {
 		Iterator<E>it=list.iterator();
@@ -119,7 +120,38 @@ public class TestListaTp4 {
 		return encontre;
 	}
 	//preguntar por el comportamiento de removeLists
-	
+	public static <E> PositionList<E> intercalar(PositionList<E> l1,PositionList<E> l2){
+		PositionList<E>list=new ListaDoblementeEnlazada<E>();
+		Iterator<E>it1=l1.iterator();
+		Iterator<E>it2=l2.iterator();
+		
+		while(it1.hasNext()||it2.hasNext()) {
+				if(it1.hasNext()) {
+					list.addLast(it1.next());
+				}
+				
+				if(it2.hasNext()) {
+					list.addLast(it2.next());
+				}
+		}
+		return list;
 	}
+	public static PositionList<Integer> intercalarOrdenado(PositionList<E> l1,PositionList<E>l2){
+		PositionList<Integer>ls2=removeLists(l1, l2);
+		PositionList<Integer>exit=intercalar(l1,ls2);
+		Position<Integer>p=exit.first();
+		int aux;
+		while(p!=null){
+			if(p.element()>exit.next(p).element()){
+				aux=exit.next(p).element();
+				exit.set(exit.next(p),p.element());
+				exit.set(p,aux);
+				}
+			p=(p!=exit.last() ? exit.next(p):null);
+		}
+		
+		return exit;
+	}
+}
 
 	
