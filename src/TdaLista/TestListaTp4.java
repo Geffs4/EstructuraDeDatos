@@ -1,14 +1,10 @@
 package TdaLista;
 
 import java.util.Iterator;
-
 import Auxiliar.Position;
 import Auxiliar.PositionList;
 
-
-
 public class TestListaTp4 {
-
 	public static void main(String[] args) {
 		ListaDoblementeEnlazada<Integer> l=new ListaDoblementeEnlazada<Integer>();
 		
@@ -51,8 +47,32 @@ public class TestListaTp4 {
 		ListaDoblementeEnlazada<String>del=(ListaDoblementeEnlazada<String>) removeLists(A,B);
 		System.out.println(A.toString()+" "+B.toString());
 		System.out.println("Elementos eliminados"+del.toString());
-
+//-------------------------------Intercarlar-----------------------------------------------
+		ListaDoblementeEnlazada<Integer>list1= new ListaDoblementeEnlazada<Integer>();
+		ListaDoblementeEnlazada<Integer>list2= new ListaDoblementeEnlazada<Integer>();
+		for(int i=0;i<=5;i++) {
+			list1.addLast(i*2);
+			list2.addLast(i*2+1);
+		}
+		System.out.println("l1:"+list1.toString());
+		System.out.println("l2:"+list2.toString());
 		
+		System.out.println("intercalado:"+intercalar(list1,list2));
+		list1.addLast(11);
+		System.out.println("ordenado:"+intercalarOrdenado(list2,list1));
+//-------------------------------elminarM--------------------------------------------------
+		ListaDoblementeEnlazada<Integer>list3=new ListaDoblementeEnlazada<Integer>();
+		
+		list3.addLast(1);
+		list3.addLast(2);
+		list3.addLast(3);
+		list3.addLast(4);
+		list3.addLast(5);
+		
+		System.out.println(list3+" "+list1);
+		eliminarM(list1,list3);
+		System.out.println(list1.toString());
+	
 	}	
 	public static <E>boolean belong(E e1,PositionList<E>list) {
 		Iterator<E>it=list.iterator();
@@ -136,9 +156,10 @@ public class TestListaTp4 {
 		}
 		return list;
 	}
-	public static PositionList<Integer> intercalarOrdenado(PositionList<E> l1,PositionList<E>l2){
-		PositionList<Integer>ls2=removeLists(l1, l2);
-		PositionList<Integer>exit=intercalar(l1,ls2);
+	public static PositionList<Integer> intercalarOrdenado(PositionList<Integer> l1,PositionList<Integer>l2){
+	
+		removeLists(l1, l2);
+		PositionList<Integer>exit=intercalar(l1,l2);
 		Position<Integer>p=exit.first();
 		int aux;
 		while(p!=null){
@@ -147,11 +168,25 @@ public class TestListaTp4 {
 				exit.set(exit.next(p),p.element());
 				exit.set(p,aux);
 				}
-			p=(p!=exit.last() ? exit.next(p):null);
+			if(p!=exit.last()&&exit.next(p)!=exit.last()){
+				p=exit.next(p);
+			}
+			else
+				p=null;
 		}
 		
 		return exit;
 	}
+	public static <E> void eliminarM(PositionList<E>l1,PositionList<E>l2){
+		removeLists(l2,l1);
+		Position<E>p=l2.last();
+		while(p!=null){
+			l1.addLast(p.element());
+			if(p!=l2.first()&&l2.prev(p)!=l2.first()){
+				p=l2.prev(p);
+			}
+			else
+				p=null;
+		}
+	}
 }
-
-	
