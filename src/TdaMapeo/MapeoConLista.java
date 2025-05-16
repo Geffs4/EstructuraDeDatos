@@ -1,5 +1,7 @@
 package TdaMapeo;
 
+import java.util.Iterator;
+
 import Auxiliar.Entrada;
 import Auxiliar.Entry;
 import Auxiliar.Position;
@@ -87,5 +89,16 @@ public class MapeoConLista<K,V> implements Map<K,V> {
 			entrada.addLast(input);
 		}
 		return entrada;
+	}
+	public String toString(){
+		String s="[";
+		Iterator<Entrada<K,V>>it = S.iterator();
+		while(it.hasNext()){
+			s=s+it.next();
+			if(it.hasNext())
+				s=s+",";
+		}
+		s=s+"]";
+		return s;
 	}
 }
