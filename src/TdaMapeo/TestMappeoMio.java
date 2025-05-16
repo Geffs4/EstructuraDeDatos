@@ -57,17 +57,22 @@ public class TestMappeoMio {
 	}
 	//ejerciocio Tp5-1b
 	public static <K,V> boolean M1perteneM2(Map<K,V>M1,Map<K,V>M2){
-		boolean pertenece=true;
+		int pertenece=0;boolean encontre=false;
 		Iterator<Entry<K,V>>it1=M1.entries().iterator();
 		while(it1.hasNext()){
+			encontre=false;
 			Entry<K,V>E1=it1.next();
-			Iterator<Entry<K,V>>it2=M2.entries().iterator();{
+			Iterator<Entry<K,V>>it2=M2.entries().iterator();
+			while(it2.hasNext()&&!encontre){
+				Entry<K,V>E2=it2.next();
 				if(E1.getKey().equals(E2.getKey())){
-					pertenece=true;
+					pertenece++;
+					encontre=true;
 				}
+				
 			}
 		}
-		return pertenece;
+		return pertenece==M1.size();
 	}
 }
 	
