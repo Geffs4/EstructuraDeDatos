@@ -2,7 +2,6 @@ package TdaMapeo;
 
 import TdaLista.*;
 import Auxiliar.*;
-import java.util.Iterator;
 
 public class TestMappeoMioII {
 	public static void main(String[] args) {
@@ -20,21 +19,22 @@ public class TestMappeoMioII {
 		p.addLast("b");
 		
 		System.out.println(p);
-		System.out.println(cantElementos(p));
+		System.out.println(cantElementosMio(p));
 	}
-	public static <E> Map<E,Integer> cantElementos(PositionList<E>l){
+	public static <E> Map<E,Integer> cantElementosMio(PositionList<E>l){
 		Map<E,Integer>cant=new MapeoConLista<E,Integer>();
-		Iterator<E>it=l.iterator();
-		E element=it.next();
-		
-		while(it.hasNext()){
-			int contador=1;
-			for(E clave:l)
-				if(element.equals(clave))
-					cant.put(element,contador++);
-				
-			element=it.next();
+		for(E elemento:l){
+			Integer contador=cant.get(elemento);
+			//el get devuelve o null o un valor asignado como(1,2,3,...)
+			if(contador==null) {
+				//significa que estamos en un nuevo elemento
+				cant.put(elemento,1);
+			}
+			else {
+				//sino es asi lo asigno al mapa con un su sucesor de valor
+				cant.put(elemento,contador+1);
+			}
 		}
 		return cant;
-	} 
+	}
 }
