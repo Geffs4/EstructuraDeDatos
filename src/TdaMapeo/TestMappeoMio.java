@@ -69,7 +69,6 @@ public class TestMappeoMio {
 					pertenece++;
 					encontre=true;
 				}
-				
 			}
 		}
 		return pertenece==M1.size();

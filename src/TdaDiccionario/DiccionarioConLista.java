@@ -101,6 +101,16 @@ public class DiccionarioConLista<K,V> implements Dictionary<K,V> {
 		
 		return exit;
 	}
-
-
+	public String toString(){
+		String s="{";
+		Iterator<Entrada<K,V>>it=list.iterator();
+		while(it.hasNext()){
+			s=s+it.next();
+			if(it.hasNext()){
+				s+=",";
+			}
+		}
+		s+="}";
+	return s	;
+	}
 }

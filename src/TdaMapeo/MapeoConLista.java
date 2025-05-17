@@ -91,14 +91,14 @@ public class MapeoConLista<K,V> implements Map<K,V> {
 		return entrada;
 	}
 	public String toString(){
-		String s="[";
+		String s="{";
 		Iterator<Entrada<K,V>>it = S.iterator();
 		while(it.hasNext()){
 			s=s+it.next();
 			if(it.hasNext())
 				s=s+",";
 		}
-		s=s+"]";
+		s=s+"}";
 		return s;
 	}
 }
