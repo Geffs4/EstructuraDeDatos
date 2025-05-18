@@ -29,7 +29,7 @@ public class MapeoConHash<K,V> implements Map<K,V>{
 		return size==0;
 	}
 
-	private int h(K key){
+	private int hashcode(K key){
 		if(key==null) {
 			throw new InvalidKeyException("llave nula");
 		}
@@ -37,12 +37,12 @@ public class MapeoConHash<K,V> implements Map<K,V>{
 	}
 	
 	public V get(K key) {
-		return hash[h(key)].get(key);
+		return hash[hashcode(key)].get(key);
 	}
 
 	@Override
 	public V put(K key, V value) {
-		V toReturn=hash[h(key)].put(key, value);
+		V toReturn=hash[hashcode(key)].put(key, value);
 		//incremento el size si el retorno del put delegado es null ya que significa que agrego un nuevo elemento 
 		//si no cambia el valor y lo de vuelve
 		if(toReturn==null)
@@ -53,7 +53,7 @@ public class MapeoConHash<K,V> implements Map<K,V>{
 
 	@Override
 	public V remove(K key) {
-		V toReturn=hash[h(key)].remove(key);
+		V toReturn=hash[hashcode(key)].remove(key);
 		if(toReturn!=null)
 			size--;
 		return toReturn;
