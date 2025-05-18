@@ -1,8 +1,10 @@
 package TdaMapeo;
 
+
 import Auxiliar.Entry;
 import Auxiliar.PositionList;
 import TdaLista.ListaDoblementeEnlazada;
+import Exceptions.*;
 
 public class MapeoConHash<K,V> implements Map<K,V>{
 	//atributos de instancia;
@@ -28,6 +30,9 @@ public class MapeoConHash<K,V> implements Map<K,V>{
 	}
 
 	private int h(K key){
+		if(key==null) {
+			throw new InvalidKeyException("llave nula");
+		}
 		return Math.abs(key.hashCode())%N;
 	}
 	
