@@ -109,6 +109,23 @@ public class TestListaTp4 {
 			}
 		return exit;
 	}
+	public static <E> PositionList<E> removeList(PositionList<E>l1,PositionList<E>l2){
+		PositionList<E>eliminado=new ListaDoblementeEnlazada<E>();
+		if(l1.isEmpty()&&l2.isEmpty())
+			return eliminado;
+		
+		Iterator<E>it=l1.iterator();
+		while(it.hasNext()){
+			E p1=it.next();
+			for(Position<E>p2:l2.positions()){
+				if(p1.equals(p2.element()))
+					eliminado.addLast(l2.remove(p2));
+			}
+		}
+		return eliminado;
+		
+	}
+	
 	public static <E> PositionList<E> removeLists(PositionList<E>l1,PositionList<E> l2){
 		PositionList<E>del=new ListaDoblementeEnlazada<E>();
 		if(l1.isEmpty()&&l2.isEmpty())
@@ -158,7 +175,7 @@ public class TestListaTp4 {
 	}
 	public static PositionList<Integer> intercalarOrdenado(PositionList<Integer> l1,PositionList<Integer>l2){
 	
-		removeLists(l1, l2);
+		removeList(l1, l2);
 		PositionList<Integer>exit=intercalar(l1,l2);
 		Position<Integer>p=exit.first();
 		int aux;
@@ -178,7 +195,7 @@ public class TestListaTp4 {
 		return exit;
 	}
 	public static <E> void eliminarM(PositionList<E>l1,PositionList<E>l2){
-		removeLists(l2,l1);
+		removeList(l2,l1);
 		Position<E>p=l2.last();
 		while(p!=null){
 			l1.addLast(p.element());
