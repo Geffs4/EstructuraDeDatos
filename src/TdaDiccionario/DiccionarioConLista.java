@@ -42,7 +42,7 @@ public class DiccionarioConLista<K,V> implements Dictionary<K,V> {
 		}
 		PositionList<Entry<K,V>>exit=new ListaDoblementeEnlazada<Entry<K,V>>();
 		for(Entry<K,V>Input:list) {
-			if(Input.getKey()==key)
+			if(Input.getKey().equals(key))
 				exit.addLast(Input);
 		}
 		return exit;
@@ -52,7 +52,6 @@ public class DiccionarioConLista<K,V> implements Dictionary<K,V> {
 	public Entry<K, V> insert(K key, V value) {
 		//si la clave es nula lanzo una excepcion 
 		if(key==null) {throw new InvalidKeyException("La clave es invalida en insert()");}
-		
 		boolean encontre=false;
 		//esto lo hago para verificar que la siguiente entrada no existe dentro de la ED
 		Iterator<Entrada<K,V>>it=list.iterator();
@@ -61,13 +60,17 @@ public class DiccionarioConLista<K,V> implements Dictionary<K,V> {
 		while(it.hasNext()&&!encontre){
 			//voy a buscar si la entrada ya se encuentra dentro de la lista
 			toReturn=it.next();
-			encontre=toReturn.getKey()==key&&toReturn.getValue()==value;		
+			if(toReturn.getKey().equals(key)&&toReturn.getValue().equals(value))
+				encontre=true;
 		}
-		if(!encontre)
+		if(!encontre) {
 			//si no se encuentra la retorno y la agrego a la lista del diccionario
 			toReturn=new Entrada<K,V>(key,value);
 			list.addLast(toReturn);
-			
+		}	
+		if(encontre)
+			toReturn=null;
+	
 		return toReturn;
 	}
 
@@ -82,7 +85,7 @@ public class DiccionarioConLista<K,V> implements Dictionary<K,V> {
 			
 			while(it.hasNext()&&!encontre) {
 				Position<Entrada<K,V>>pos=it.next();
-				if(pos.element().getKey()==e.getKey()&&pos.element().getValue()==e.getValue());{
+				if(pos.element().getKey()==e.getKey()&&pos.element().getValue()==e.getValue()){
 					//le asigno al toReturn esto porque el remove devuelve el elemento que borro
 					toReturn=list.remove(pos);
 					encontre=true;
