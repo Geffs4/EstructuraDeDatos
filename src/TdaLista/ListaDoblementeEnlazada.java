@@ -87,15 +87,12 @@ public class ListaDoblementeEnlazada<E> implements PositionList<E> {
 	}
 	@Override
 	public void addLast(E element) {
-		if(isEmpty()) {
-			addFirst(element);
-		}
-		else {
+
 			DNodo<E>nuevo=new DNodo<E>(element,trailer.getPrevio(),trailer);
 			trailer.getPrevio().setSiguiente(nuevo);
 			trailer.setPrevio(nuevo);
 			size++;
-		}
+		
 	}
 
 	@Override
@@ -208,5 +205,26 @@ public class ListaDoblementeEnlazada<E> implements PositionList<E> {
 				addBefore(p, elemen);
 			p=p.getSiguiente();
 		}
+	}
+	public int duplicarElem(E elem){
+		if(header.getSiguiente()==trailer)
+			throw new EmptyListException("La lista esta vacia");
+		
+		int contar=0;
+		DNodo<E>d;
+		DNodo<E>p=header.getSiguiente();
+		while(p!=trailer){
+			d=p;
+			if(p.element().equals(elem)){
+				d=new DNodo<E>(elem);
+				d.setSiguiente(p.getSiguiente());
+				d.setPrevio(p);
+				p.getSiguiente().setPrevio(d);
+				p.setSiguiente(d);
+				contar++;
+			}
+			p=d.getSiguiente();
+		}
+		return contar;
 	}
 }

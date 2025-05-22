@@ -33,4 +33,21 @@ public class PilaEnlazada<E> implements Stack<E>{
 		size--;
 		return aux;
 		}
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("PilaEnlazada [");
+
+	    Nodo<E> actual = top;
+	    while (actual != null) {
+	        sb.append(actual.getElemento());
+	        if (actual.getSiguiente() != null) {
+	            sb.append(", ");
+	        }
+	        actual = actual.getSiguiente();
+	    }
+
+	    sb.append("]");
+	    return sb.toString();
+	}	
 	}

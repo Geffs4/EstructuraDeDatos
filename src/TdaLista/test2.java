@@ -1,7 +1,5 @@
 package TdaLista;
 
-import java.util.Iterator;
-
 import Auxiliar.Position;
 import Auxiliar.PositionList;
 
@@ -12,27 +10,23 @@ public class test2 {
 		PositionList<Integer>l2=new ListaDoblementeEnlazada<Integer>();
 		for(int i=0;i<5;i++){
 			l1.addLast(i*2);
-			l2.addLast(i*2);
+			l2.addLast(i*2+4);
 		}
 		
 		System.out.println(l1+" "+l2);
-		System.out.println(removeList(l1,l2));
+		System.out.println(equivalentes(l1,l2));
 
 	}
-	public static <E> PositionList<E> removeList(PositionList<E>l1,PositionList<E>l2){
-		PositionList<E>eliminado=new ListaDoblementeEnlazada<E>();
-		if(l1.isEmpty()&&l2.isEmpty())
-			return eliminado;
-		
-		Iterator<E>it=l1.iterator();
-		while(it.hasNext()){
-			E p1=it.next();
-			for(Position<E>p2:l2.positions()){
-				if(p1.equals(p2.element()))
-					eliminado.addLast(l2.remove(p2));
+	public static <E> PositionList<E> equivalentes(PositionList<E> l1,PositionList<E> l2){
+		PositionList<E>exit=new ListaDoblementeEnlazada<E>();
+		Position<E>cursor=l1.first();
+		while(cursor!=null){
+			for(E elem:l2){
+				if(elem.equals(cursor.element()))
+						exit.addLast(cursor.element());
 			}
+			cursor=(cursor!=l1.last()) ? l1.next(cursor):null;
 		}
-		return eliminado;
-		
+		return exit;
 	}
 }
