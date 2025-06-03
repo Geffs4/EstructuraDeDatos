@@ -3,7 +3,6 @@ package TdaLista;
 import java.util.Iterator;
 
 import Auxiliar.Position;
-import Auxiliar.PositionList;
 import Exceptions.*;
 
 public class ListaDoblementeEnlazada<E> implements PositionList<E> {
@@ -87,12 +86,10 @@ public class ListaDoblementeEnlazada<E> implements PositionList<E> {
 	}
 	@Override
 	public void addLast(E element) {
-
-			DNodo<E>nuevo=new DNodo<E>(element,trailer.getPrevio(),trailer);
-			trailer.getPrevio().setSiguiente(nuevo);
-			trailer.setPrevio(nuevo);
-			size++;
-		
+		DNodo<E>nuevo=new DNodo<E>(element,trailer.getPrevio(),trailer);
+		trailer.getPrevio().setSiguiente(nuevo);
+		trailer.setPrevio(nuevo);
+		size++;
 	}
 
 	@Override
@@ -226,5 +223,25 @@ public class ListaDoblementeEnlazada<E> implements PositionList<E> {
 			p=d.getSiguiente();
 		}
 		return contar;
+	}
+	public void encontrarEliminar(E elem){
+		if(elem==null){
+			throw new InvalidPositionException("El elemento pasado por parametro es nulo");
+		}
+		if(elem!=trailer.getPrevio().element()){
+			DNodo<E>cursor=header.getSiguiente();
+			int contar=0;
+			while(cursor!=trailer){
+				contar++;
+				if(cursor.element().equals(elem)){
+					cursor.getSiguiente().setPrevio(null);
+					cursor.setSiguiente(trailer);
+					trailer.getPrevio().setSiguiente(null);
+					trailer.setPrevio(cursor);
+				}
+				cursor=cursor.getSiguiente();		
+			}
+			size=contar;
+		}
 	}
 }

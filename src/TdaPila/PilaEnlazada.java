@@ -11,8 +11,7 @@ public class PilaEnlazada<E> implements Stack<E>{
 		}
 	//comandos
 	public void push(E element) {
-		Nodo<E>Aux= new Nodo<E>(element,top);
-		top=Aux;
+		top = new Nodo<E>(element,top);
 		size++;
 	}
 	//consultas 

@@ -1,12 +1,11 @@
 package TdaLista;
 
 import Auxiliar.Position;
-import Auxiliar.PositionList;
 
 public class test2 {
 
 	public static void main(String[] args) {
-		PositionList<Integer>l1=new ListaDoblementeEnlazada<Integer>();
+		ListaDoblementeEnlazada<Integer>l1=new ListaDoblementeEnlazada<Integer>();
 		PositionList<Integer>l2=new ListaDoblementeEnlazada<Integer>();
 		for(int i=0;i<5;i++){
 			l1.addLast(i*2);
@@ -15,6 +14,10 @@ public class test2 {
 		
 		System.out.println(l1+" "+l2);
 		System.out.println(equivalentes(l1,l2));
+		System.out.println(l1+" "+l1.size());
+		//l1.encontrarEliminar(7);
+		espejar(l1);
+		System.out.println(l1+" ");
 
 	}
 	public static <E> PositionList<E> equivalentes(PositionList<E> l1,PositionList<E> l2){
@@ -29,4 +32,12 @@ public class test2 {
 		}
 		return exit;
 	}
+	public static<E> void espejar(PositionList<E> list){
+		Position<E> cursor=list.last();
+		while(cursor!=null) {
+			list.addLast(cursor.element());
+			cursor=cursor!=list.first()? list.prev(cursor):null;
+		}
+	}  
+
 }

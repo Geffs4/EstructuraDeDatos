@@ -5,7 +5,6 @@ import java.util.Iterator;
 import Auxiliar.Entrada;
 import Auxiliar.Entry;
 import Auxiliar.Position;
-import Auxiliar.PositionList;
 import Exceptions.*;
 import TdaLista.*;
 

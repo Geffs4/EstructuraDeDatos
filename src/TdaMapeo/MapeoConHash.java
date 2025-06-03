@@ -2,8 +2,8 @@ package TdaMapeo;
 
 
 import Auxiliar.Entry;
-import Auxiliar.PositionList;
 import TdaLista.ListaDoblementeEnlazada;
+import TdaLista.PositionList;
 import Exceptions.*;
 
 public class MapeoConHash<K,V> implements Map<K,V>{

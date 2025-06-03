@@ -3,7 +3,7 @@ package Ejercicios;
 import java.util.Iterator;
 
 import Auxiliar.Position;
-import Auxiliar.PositionList;
+import TdaLista.PositionList;
 
 
 public class ejercicio3 {

@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 
 import Auxiliar.Position;
-import Auxiliar.PositionList;
 
 public class TestListaTp4 {
 	public static void main(String[] args) {
