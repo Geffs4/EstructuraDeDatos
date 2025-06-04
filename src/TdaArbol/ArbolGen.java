@@ -2,6 +2,7 @@ package TdaArbol;
 
 import java.util.Iterator;
 import Auxiliar.Position;
+import Exceptions.BoundaryViolationException;
 import Exceptions.EmptyTreeException;
 import Exceptions.InvalidOperationException;
 import Exceptions.InvalidPositionException;
@@ -45,7 +46,7 @@ public class ArbolGen<E> implements Tree<E> {
 	@Override
 	public Iterator<E> iterator() {
 		PositionList<E>exit=new ListaDoblementeEnlazada<E>();
-		
+		preOrdenElem(root, exit);
 		return exit.iterator();
 	}
 
@@ -65,6 +66,7 @@ public class ArbolGen<E> implements Tree<E> {
 
 	public Position<E> parent(Position<E> v) {
 		TNodo<E>nodo=checkPosition(v);
+		if(nodo==root) {throw new BoundaryViolationException("el nodo es la raiz");}
 		return nodo.getPadre();
 	}
 
@@ -117,41 +119,34 @@ public class ArbolGen<E> implements Tree<E> {
 	}
 
 	public Position<E> addBefore(Position<E> p, Position<E> rb, E e){
-	 	TNodo<E>NodoP=checkPosition(p);
-		TNodo<E>nodoHead=checkPosition(rb);
-		TNodo<E>nuevo=new TNodo<E>(e,NodoP);
-		PositionList<TNodo<E>>sons=NodoP.getHijos();
-		boolean encontre=false;
-		Position<TNodo<E>>cursor=sons.first();
-		while(cursor!=null&&!encontre) {
-			if(nodoHead==cursor.element())
-				encontre=true;
-			else
-				cursor=cursor!=sons.last()?sons.next(cursor):null;
+		TNodo<E> padre = checkPosition(p);
+		TNodo<E> hder = checkPosition(rb);
+		if(hder.getPadre()!= padre ) {throw new InvalidPositionException("El padre no es el verdadero padre");}
+		TNodo<E> nuevo = new TNodo<E>(e, padre);
+		Iterator<Position<TNodo<E>>> ite = padre.getHijos().positions().iterator();
+		Position<TNodo<E>> posBuscada = null;
+		while(ite.hasNext()&&posBuscada==null) {
+			Position<TNodo<E>> pos = ite.next();
+			if(pos.element() == hder ) {posBuscada = pos;}
 		}
-		if(!encontre){throw new InvalidPositionException("p no es padre de rb");}
-		sons.addBefore(cursor,nuevo);
-		size++;
+		padre.getHijos().addBefore(posBuscada, nuevo);
+		this.size++;
 		return nuevo;
 	}
 	
 	public Position<E> addAfter(Position<E> p, Position<E> lb, E e) {
-		TNodo<E>NodoP=checkPosition(p);
-		TNodo<E>nodoHead=checkPosition(lb);
-		TNodo<E>nuevo=new TNodo<E>(e,NodoP);
-		PositionList<TNodo<E>>sons=NodoP.getHijos();
-		
-		boolean encontre=false;
-		Position<TNodo<E>>cursor=sons.first();
-		while(cursor!=null && !encontre){
-			if(nodoHead==cursor.element()){
-				encontre=true;
-			}
-			else cursor=cursor!=sons.last()? sons.next(cursor):null;
+		TNodo<E> padre = checkPosition(p);
+		TNodo<E> hder = checkPosition(lb);
+		if(hder.getPadre()!= padre ) {throw new InvalidPositionException("El padre no es el verdadero padre");}
+		TNodo<E> nuevo = new TNodo<E>(e, padre);
+		Iterator<Position<TNodo<E>>> ite = padre.getHijos().positions().iterator();
+		Position<TNodo<E>> posBuscada = null;
+		while(ite.hasNext()&&posBuscada==null) {
+			Position<TNodo<E>> pos = ite.next();
+			if(pos.element() == hder ) {posBuscada = pos;}
 		}
-		if(!encontre){throw new InvalidPositionException("p no es padre de lb");}
-		sons.addAfter(cursor, nuevo);
-		size++;
+		padre.getHijos().addAfter(posBuscada, nuevo);
+		this.size++;
 		return nuevo;
 	}
 
@@ -167,11 +162,12 @@ public class ArbolGen<E> implements Tree<E> {
 		else{
 			Iterator<Position<TNodo<E>>>sons=nodo.getPadre().getHijos().positions().iterator();
 			Position<TNodo<E>>posBuscada=null;
-			while(posBuscada==null && sons.hasNext());
+			while(posBuscada==null && sons.hasNext()) {
 				Position<TNodo<E>>cursor=sons.next();
 				if(cursor.element()==nodo) {
 					posBuscada=cursor;
 				}
+			}
 			nodo.getPadre().getHijos().remove(posBuscada);
 			size--;
 		}
@@ -180,19 +176,14 @@ public class ArbolGen<E> implements Tree<E> {
 
 	public void removeInternalNode(Position<E> p) {
 		TNodo<E>nodo=checkPosition(p);
-		if(isExternal(nodo)) {
-			throw new InvalidPositionException("p es un nodo externo");
-		}
+		if(isExternal(nodo)) {throw new InvalidPositionException("p es un nodo externo");}
 		if(nodo==root){
-			if(nodo.getHijos().size()>1){
-				throw new InvalidPositionException("p tiene mas de un hijo por lo tanto no se puede crear una nueva raiz");
-			}
+			if(nodo.getHijos().size()>1){throw new InvalidPositionException("p tiene mas de un hijo por lo tanto no se puede crear una nueva raiz");}
 			this.root=root.getHijos().first().element();
 			root.setPadre(null);
 			size--;
-		}
-		else{
-			Iterator<Position<TNodo<E>>>sons=nodo.getHijos().positions().iterator();
+		}else{
+			Iterator<Position<TNodo<E>>>sons=nodo.getPadre().getHijos().positions().iterator();
 			Position<TNodo<E>>posBuscada=null;
 			while(sons.hasNext()&&posBuscada==null){
 				Position<TNodo<E>>cursor=sons.next();
@@ -215,14 +206,18 @@ public class ArbolGen<E> implements Tree<E> {
 		else{removeExternalNode(nodo);}
 	}
 	protected void preOrdenElem(TNodo<E> nodo,PositionList<E>list){
-		list.addLast(nodo.element());
-		for(TNodo<E>n:nodo.getHijos()){
-			preOrdenElem(n, list);
+		if(nodo!=null) {
+			list.addLast(nodo.element());
+			for(TNodo<E>n:nodo.getHijos()){
+				preOrdenElem(n, list);
+			}
 		}
 	}
 	protected void preOrdenPos(TNodo<E> nodo,PositionList<Position<E>>list) {
-		list.addLast(nodo);
-		for(TNodo<E>n:nodo.getHijos())
-			preOrdenPos(n,list);
+		if(nodo!=null) {
+			list.addLast(nodo);
+			for(TNodo<E>n:nodo.getHijos())
+				preOrdenPos(n,list);
+		}
 	}
 }

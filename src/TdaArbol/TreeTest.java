@@ -22,7 +22,7 @@ public class TreeTest {
 	 * Inicializa el árbol antes de cada test individual
 	 */
 	private Tree<Integer> getTree() {
-		return new MiArbol<Integer>();
+		return new ArbolGen<Integer>();
 	}
 
 	@Before

@@ -3,6 +3,7 @@ package TdaArbol;
 import java.util.Iterator;
 
 import Auxiliar.Position;
+import Exceptions.BoundaryViolationException;
 import Exceptions.EmptyTreeException;
 import Exceptions.InvalidOperationException;
 import Exceptions.InvalidPositionException;
@@ -74,6 +75,7 @@ public class MiArbol<E> implements Tree<E> {
 	@Override
 	public Position<E> parent(Position<E> v) {
 		TNodo<E> nodo = checkPosition(v);
+		if(nodo==root) {throw new BoundaryViolationException("el nodo es la raiz");}
 		return nodo.getPadre();
 	}
 
@@ -119,6 +121,7 @@ public class MiArbol<E> implements Tree<E> {
 		TNodo<E> nodo = checkPosition(p);
 		TNodo<E> hijo = new TNodo<E>(e, nodo);
 		nodo.getHijos().addFirst(hijo);
+		size++;
 		return hijo;
 	}
 
@@ -127,6 +130,7 @@ public class MiArbol<E> implements Tree<E> {
 		TNodo<E> nodo = checkPosition(p);
 		TNodo<E> hijo = new TNodo<E>(e, nodo);
 		nodo.getHijos().addLast(hijo);
+		size++;
 		return hijo;
 	}
 
@@ -219,16 +223,20 @@ public class MiArbol<E> implements Tree<E> {
 	}
 	
 	protected void preordenElementos( TNodo<E> nodo, PositionList<E> lista ) {
-		lista.addLast(nodo.element()); //Visitar nodo
-		for(TNodo<E> n : nodo.getHijos()) {
+		if (nodo != null) {
+			lista.addLast(nodo.element()); //Visitar nodo
+			for(TNodo<E> n : nodo.getHijos()) {
 			preordenElementos(n, lista);
+			}
 		}
 	}
 	
 	protected void preordenPositions( TNodo<E> nodo, PositionList<Position<E>> lista ) {
-		lista.addLast(nodo);
-		for(TNodo<E> n : nodo.getHijos()) {
-			preordenPositions(n, lista);
+		if(nodo!=null) {
+			lista.addLast(nodo);
+			for(TNodo<E> n : nodo.getHijos()) {
+				preordenPositions(n, lista);
+			}
 		}
 	}
 
