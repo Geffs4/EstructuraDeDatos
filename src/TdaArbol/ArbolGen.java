@@ -220,4 +220,33 @@ public class ArbolGen<E> implements Tree<E> {
 				preOrdenPos(n,list);
 		}
 	}
-}
+	@Override
+	public String toString() {
+	    if (isEmpty()) return "[]";
+	    return "[" + toStringCompacto(root) + "]";
+	}
+
+	private String toStringCompacto(TNodo<E> nodo) {
+	    String result =nodo.element().toString();
+	    if (!nodo.getHijos().isEmpty()) {
+	        result += "(";
+	        Iterator<TNodo<E>> it = nodo.getHijos().iterator();
+	        while (it.hasNext()) {
+	            result += toStringCompacto(it.next());
+	            if (it.hasNext()) result += ",";
+	        }
+	        result += ")";
+	    }
+	    return result;
+	}
+	public void eliminarUltimoHijo(Position<E> p){
+		if(isRoot(p)){throw new InvalidOperationException("la posicion pasada es la raiz");}
+		TNodo<E>nodoHijo=checkPosition(p);
+		TNodo<E>nodoPadre=nodoHijo.getPadre();
+		System.out.println(nodoPadre.getHijos().last()+" "+nodoHijo);
+		if(nodoPadre.getHijos().last().element()==nodoHijo){
+			removeExternalNode(nodoHijo);
+		}
+		else {throw new InvalidPositionException("p no es el ultimo hijo");}	
+		}
+	}	
