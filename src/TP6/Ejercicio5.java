@@ -1,4 +1,4 @@
-package TP7;
+package TP6;
 import TdaArbol.ArbolGen;
 import TdaArbol.TNodo;
 import TdaArbol.Tree;
