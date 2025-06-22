@@ -1,8 +1,7 @@
 package TdaArbolBinario;
 
+import TdaDiccionario.*;
 import java.util.Iterator;
-
-import javax.management.openmbean.InvalidOpenTypeException;
 
 import Auxiliar.Position;
 import Exceptions.BoundaryViolationException;
@@ -270,5 +269,39 @@ public class ArbolBinario<E> implements BinaryTree<E> {
 			}
 		}
 	}
+	//Ejercicio-2
+	public Dictionary<E,E> diccionario(){
+		Dictionary<E,E>dic=new DiccionarioConLista<E, E>();
+		preOrden(root,dic);
+		return dic;
+		
+	}
+	public String toString(){
+		if(isEmpty())return "[]";
+		return "["+ String(root)+"]";
+	}
 
+	private String String(BTNodo<E> nodo){
+		String result =nodo.element().toString();
+	    if (!isExternal(nodo)) {
+	        result += "(";
+	        Iterator<Position<E>> it = children(nodo).iterator();
+	        while (it.hasNext()) {
+	            result += String((BTNodo<E>) it.next());
+	            if (it.hasNext()) result += ",";
+	        }
+	        result += ")";
+	    }
+	    return result;
+	}
+
+	private void preOrden(BTNodo<E> nodo, Dictionary<E, E> dic) {
+		if(nodo!=null){
+			if(nodo!=root) {
+				dic.insert(nodo.getParent().element(),nodo.element());
+			}	
+				preOrden(nodo.getLeft(), dic);
+				preOrden(nodo.getRight(),dic);
+		}
+	}
 }
