@@ -13,6 +13,7 @@ public class Ejercicio4 {
 		Position<String>B=arbol.addLeft(arbol.root(),"B");
 		Position<String>C=arbol.addLeft(B,"C");
 		Position<String>D=arbol.addLeft(C, "D");
+		@SuppressWarnings("unused")
 		Position<String>E=arbol.addLeft(D, "E");
 		System.out.println(arbol);
 		completarDerechos("puto",arbol);

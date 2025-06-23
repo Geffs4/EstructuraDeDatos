@@ -1,7 +1,6 @@
 package TdaMapeo;
 
 import TdaLista.*;
-import Auxiliar.*;
 
 public class TestMappeoMioII {
 	public static void main(String[] args) {

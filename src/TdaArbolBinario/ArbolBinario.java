@@ -8,7 +8,6 @@ import Exceptions.BoundaryViolationException;
 import Exceptions.EmptyTreeException;
 import Exceptions.InvalidOperationException;
 import Exceptions.InvalidPositionException;
-import TdaArbol.TNodo;
 import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
 

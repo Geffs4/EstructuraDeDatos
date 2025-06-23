@@ -44,6 +44,7 @@ public class Ejercicio4 {
 					list.addLast(nodo);
 		}
 	}
+	@SuppressWarnings("unused")
 	private static <E> String toString(Tree<E> arbol){
 		Iterator<E> it=arbol.iterator();
 		String s="[ ";
