@@ -155,10 +155,12 @@ public class ArbolBinario<E> implements BinaryTree<E> {
 			BTNodo<E>parent=nodo.getParent();
 			if(parent.getLeft()==nodo){
 				parent.setLeft(null);
+				
 			}
 			else if(parent.getRight()==nodo) {
-				parent.setRight(nodo);
+				parent.setRight(null);
 			}
+			nodo.setParent(null);
 			size--;
 		}
 	}
@@ -301,6 +303,18 @@ public class ArbolBinario<E> implements BinaryTree<E> {
 			}	
 				preOrden(nodo.getLeft(), dic);
 				preOrden(nodo.getRight(),dic);
+		}
+	}
+	public void eliminarSubarbol(Position<E> p) {
+		BTNodo<E>NodoRaiz=checkPosition(p);
+		postOrdenEliminar(NodoRaiz);
+	}
+
+	private void postOrdenEliminar(BTNodo<E> nodo) {
+		if(nodo!=null){
+			postOrdenEliminar(nodo.getLeft());
+			postOrdenEliminar(nodo.getRight());
+			removeNode(nodo);
 		}
 	}
 }
