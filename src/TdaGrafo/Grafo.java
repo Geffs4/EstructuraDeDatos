@@ -159,5 +159,4 @@ public class Grafo<V, E> implements Graph<V,E>{
 		
 		return arcos.remove(edge.positionEdge()).element();
 	}
-
 }
