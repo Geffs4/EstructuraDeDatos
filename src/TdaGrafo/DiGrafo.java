@@ -159,7 +159,6 @@ public class DiGrafo<V, E> implements Graph<V, E> {
 		edge.getV2().getIncidentes().remove(edge.getPosEnIncidentes());
 		return arcos.remove(edge.getPosicionEnListaArco()).element();
 	}
-	@SuppressWarnings("hiding")
 	private class Vertice<V,E> implements Vertex<V>{
 		//atributos de instancia
 		protected V rotulo;

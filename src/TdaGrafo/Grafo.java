@@ -159,4 +159,27 @@ public class Grafo<V, E> implements Graph<V,E>{
 		
 		return arcos.remove(edge.positionEdge()).element();
 	}
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("{");
+
+	    boolean primero = true;
+	    for (Edge<E> e : edges()) {
+	        Vertex<V>[] extremos = endvertices(e);
+	        V v1 = extremos[0].element();
+	        V v2 = extremos[1].element();
+
+	        if (!primero) sb.append(",");
+	        sb.append("(").append(v1).append(",").append(v2).append(")");
+	        sb.append(",(").append(v2).append(",").append(v1).append(")");
+
+	        primero = false;
+	    }
+
+	    sb.append("}");
+	    return sb.toString();
+	}
+
+
 }

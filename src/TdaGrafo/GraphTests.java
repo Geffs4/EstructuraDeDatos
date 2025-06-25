@@ -38,7 +38,7 @@ public class GraphTests {
 	 */
 	@Before
 	public void setUp() {
-		graph = new GrafoConMatriz<Object, Object>(3); // cambiar esta línea para probar
+		graph = new DiGrafo<Object, Object>(); // cambiar esta línea para probar
 												// distintas implementaciones
 		o1 = new Object();
 	}
