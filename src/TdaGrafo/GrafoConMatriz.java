@@ -68,7 +68,7 @@ public class GrafoConMatriz<V,E> implements Graph<V,E>{
 			Vertice<V>vert=checkPositionVertice(v);
 			Arco<V,E>edge=checkPositionEdge(e);
 			Vertice<V>temp=null;
-			if(edge.getV1()!=vert&&edge.getV2()!=vert){throw new InvalidVertexException("el vertice no pertenece al arco");}
+			if(edge.getV1()!=vert&&edge.getV2()!=vert){throw new InvalidEdgeException("el vertice no pertenece al arco");}
 			if(edge.getV1()==vert){temp=edge.getV2();}
 			else if (edge.getV2()==vert) {temp=edge.getV1();}
 					

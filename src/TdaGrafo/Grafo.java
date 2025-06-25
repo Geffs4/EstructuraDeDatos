@@ -77,7 +77,7 @@ public class Grafo<V, E> implements Graph<V,E>{
 	@Override
 	public Vertex<V>[] endvertices(Edge<E> e) {
 		Arco<V,E>edge=checkPositionEdge(e);
-		Vertex<V>temp[]=(Vertex[]) new Vertex[2];
+		Vertex<V>temp[]=(Vertex<V>[]) new Vertex[2];
 		temp[0]=edge.getV1();
 		temp[1]=edge.getV2();
 		return temp;
