@@ -4,6 +4,7 @@ import Exceptions.*;
 import java.util.Iterator;
 import Auxiliar.*;
 import TdaLista.*;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class DiccionarioConLista<K,V> implements Dictionary<K,V> {
 	//atributos de instancia 	

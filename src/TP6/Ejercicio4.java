@@ -8,9 +8,8 @@ import Auxiliar.Position;
 import TdaArbol.ArbolGen;
 import TdaArbol.TNodo;
 import TdaArbol.Tree;
-import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
-
+import TdaLista.ListaDoblementeEnlazada;
 public class Ejercicio4 {
 
 	public static void main(String[] args) {

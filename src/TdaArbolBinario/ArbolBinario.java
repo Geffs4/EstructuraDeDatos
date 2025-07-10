@@ -8,8 +8,8 @@ import Exceptions.BoundaryViolationException;
 import Exceptions.EmptyTreeException;
 import Exceptions.InvalidOperationException;
 import Exceptions.InvalidPositionException;
-import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class ArbolBinario<E> implements BinaryTree<E> {
 	//atributos de instancia

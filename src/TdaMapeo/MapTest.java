@@ -10,6 +10,7 @@
 package TdaMapeo;
 
 import Exceptions.*;
+import TdaABB.MapABB;
 import Auxiliar.Entry;
 
 import static org.junit.Assert.*;
@@ -30,7 +31,7 @@ public class MapTest {
 
 	private Map<Integer, Integer> getMapeo() {
 
-		return new MapeoConHash<Integer, Integer>();
+		return new MapABB<Integer, Integer>();
 
 	}
 

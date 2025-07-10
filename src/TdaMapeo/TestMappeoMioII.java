@@ -1,6 +1,7 @@
 package TdaMapeo;
 
 import TdaLista.*;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class TestMappeoMioII {
 	public static void main(String[] args) {

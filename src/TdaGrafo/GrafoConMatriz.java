@@ -3,6 +3,7 @@ import Auxiliar.Position;
 import Exceptions.InvalidEdgeException;
 import Exceptions.InvalidVertexException;
 import TdaLista.*;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class GrafoConMatriz<V,E> implements Graph<V,E>{
 	//atributos de instancia

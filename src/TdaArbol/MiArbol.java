@@ -7,8 +7,8 @@ import Exceptions.BoundaryViolationException;
 import Exceptions.EmptyTreeException;
 import Exceptions.InvalidOperationException;
 import Exceptions.InvalidPositionException;
-import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class MiArbol<E> implements Tree<E> {
 

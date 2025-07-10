@@ -1,8 +1,8 @@
 package TdaGrafo;
 
 import Auxiliar.Position;
-import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class Vertice<V,E> implements Vertex<V>{
 	//Atributos de instancia

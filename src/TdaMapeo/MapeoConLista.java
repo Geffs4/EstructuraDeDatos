@@ -7,6 +7,7 @@ import Auxiliar.Entry;
 import Auxiliar.Position;
 import Exceptions.*;
 import TdaLista.*;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class MapeoConLista<K,V> implements Map<K,V> {
 	//atributos de instancia

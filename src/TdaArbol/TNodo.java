@@ -1,8 +1,8 @@
 package TdaArbol;
 
 import Auxiliar.Position;
-import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class TNodo<E> implements Position<E> {
 	//atributos de instancia

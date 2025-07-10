@@ -2,8 +2,8 @@ package TdaDiccionario;
 
 import Auxiliar.Entry;
 import Exceptions.*;
-import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class DiccionarioConHash<K,V> implements Dictionary<K,V>{
 	//atributos de instancia 

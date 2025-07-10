@@ -1,6 +1,7 @@
 package TdaMapeo;
 
 import TdaLista.*;
+import TdaLista.ListaDoblementeEnlazada;
 
 import java.util.Iterator;
 

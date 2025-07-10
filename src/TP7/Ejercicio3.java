@@ -4,8 +4,8 @@ import Auxiliar.Position;
 import TdaArbolBinario.ArbolBinario;
 import TdaArbolBinario.BTNodo;
 import TdaArbolBinario.BinaryTree;
-import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class Ejercicio3 {
 

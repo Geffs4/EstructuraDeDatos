@@ -9,9 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 import TdaCola.*;
 import TdaLista.PositionList;
+import TdaLista.ListaDoblementeEnlazada;
 import Auxiliar.Position;
 import Exceptions.*;
-import TdaLista.ListaDoblementeEnlazada;
 
 
 public class TreeTest {

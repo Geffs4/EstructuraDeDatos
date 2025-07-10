@@ -6,8 +6,8 @@ import Exceptions.BoundaryViolationException;
 import Exceptions.EmptyTreeException;
 import Exceptions.InvalidOperationException;
 import Exceptions.InvalidPositionException;
-import TdaLista.ListaDoblementeEnlazada;
 import TdaLista.PositionList;
+import TdaLista.ListaDoblementeEnlazada;
 
 public class ArbolGen<E> implements Tree<E> {
 	//atributos de instancia

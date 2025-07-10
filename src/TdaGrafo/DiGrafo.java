@@ -4,8 +4,7 @@ import java.util.Iterator;
 import Auxiliar.Position;
 import Exceptions.InvalidEdgeException;
 import Exceptions.InvalidVertexException;
-import TdaLista.ListaDoblementeEnlazada;
-import TdaLista.PositionList;
+import TdaLista.*;
 
 public class DiGrafo<V, E> implements Graph<V, E> {
 	//Atributos de instancia 
